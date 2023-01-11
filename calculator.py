@@ -1,5 +1,36 @@
+import tkinter as calculator
 import math
 
+# ##############################################################################################
+
+container = calculator.Tk()
+container.geometry('300x500')
+container.title('Calculator')
+
+lable = calculator.Label(container, text="SMC - 11A1", font=('Arial', 20))
+lable.pack(padx=20, pady=20)
+
+display = calculator.Text(container, height=3, font=('Arial', 15))
+display.pack(padx=10, pady=10)
+
+buttonFrame = calculator.Frame(container)
+buttonFrame.columnconfigure(0, weight=1)
+buttonFrame.columnconfigure(1, weight=1)
+buttonFrame.columnconfigure(2, weight=1)
+button1 = calculator.Button(buttonFrame, text='AC', font=('Arial', 10))
+button1.grid(row=0, column=0, sticky=calculator.W+calculator.E)
+button2 = calculator.Button(buttonFrame, text='DE', font=('Arial', 10))
+button2.grid(row=0, column=1, sticky=calculator.W+calculator.E)
+button3 = calculator.Button(buttonFrame, text='ANS', font=('Arial', 10))
+button3.grid(row=0, column=2, sticky=calculator.W+calculator.E)
+# button4 = calculator.Button(buttonFrame, text='/', font=('Arial', 10))
+# button4.grid(row=0, column=3, sticky=calculator.W+calculator.E)
+
+buttonFrame.pack(fill='x')
+
+container.mainloop()
+
+# ##############################################################################################
 print('Select an operations to perform: ')
 print('1. ADDITION (+)')
 print('2. SUBTRACTION (-)')
@@ -55,8 +86,11 @@ print('4. COTAN')
 operation = input('Select an operations to perform: ')
 
 if operation == '1': # SIN MOTHOD
-    x = int(input('Enter your number (SIN): '))
-    print('SIN(' + str(x) + ') ' + 'is ' + str(math.sin(x)))
+    # x = int(input('Enter your number (SIN): '))
+    # print('SIN(' + str(x) + ') ' + 'is ' + str(math.sin(x)))
+    x = eval(input('what is the angle measure?'))
+    result = math.cos(math.radians(x))
+    print('SIN(' + str(x) + ') ' + 'is ' + str(round(result, 3)))
 elif operation == '2': # COS METHOD
     x = int(input('Enter your number (COS): '))
     print('COS(' + str(x) + ') ' + 'is ' + str(math.cos(x)))
@@ -99,3 +133,11 @@ elif operation == '5': # M -> YD
     M = int(input('Enter your number (M -> YD): '))
     YD = int(M) / 0.3048
     print(str(M) + ' M ' + '= ' + str(YD) + ' YD')
+elif operation == '6': # YD -> M
+    YD = int(input('Enter your number (YD -> M): '))
+    M = int(YD) * 0.3048
+    print(str(YD) + ' YD ' + '= ' + str(M) + ' M')
+elif operation == '6':  # YD -> M
+    YD = int(input('Enter your number (YD -> M): '))
+    M = int(YD) * 0.3048
+    print(str(YD) + ' YD ' + '= ' + str(M) + ' M')
