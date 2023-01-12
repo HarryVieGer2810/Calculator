@@ -105,7 +105,6 @@ class Calculator:
 
     def delete(self):
         self.current_expression = ''
-        self.total_expression = ''
         self.update_label()
 
     def create_delete_button(self):
