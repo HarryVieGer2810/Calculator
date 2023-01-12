@@ -14,7 +14,7 @@ LABEL_COLOR = '#25265E'
 class Calculator:
     def __init__(self):
         self.window = tk.Tk()
-        self.window.geometry('500x700')
+        self.window.geometry('270x500')
         self.window.resizable(0, 0)
         self.window.title('Calculator')
 
@@ -54,6 +54,7 @@ class Calculator:
     def create_special_buttons(self):
         self.create_clear_button()
         self.create_equals_button()
+        self.create_delete_button()
         self.create_square_button()
         self.create_sqrt_button()
 
@@ -102,6 +103,15 @@ class Calculator:
         button = tk.Button(self.buttons_frame, text='C', bg=OFF_WHITE, fg=LABEL_COLOR, font=DEFAULT_FONT_STYLE, borderwidth=0, command=self.clear)
         button.grid(row=0, column=1, sticky=tk.NSEW)
 
+    def delete(self):
+        self.current_expression = ''
+        self.total_expression = ''
+        self.update_label()
+
+    def create_delete_button(self):
+        button = tk.Button(self.buttons_frame, text='DE', bg=OFF_WHITE, fg=LABEL_COLOR, font=DEFAULT_FONT_STYLE, borderwidth=0, command=self.delete)
+        button.grid(row=4, column=3, sticky=tk.NSEW)
+
     def square(self):
         self.current_expression = str(eval(f'{self.current_expression}**2'))
         self.update_label()
@@ -135,7 +145,7 @@ class Calculator:
 
     def create_equals_button(self):
         button = tk.Button(self.buttons_frame, text='=', bg=LIGHT_BLUE, fg=LABEL_COLOR, font=DEFAULT_FONT_STYLE, borderwidth=0, command=self.evaluate)
-        button.grid(row=4, column=3, columnspan=2, sticky=tk.NSEW)
+        button.grid(row=4, column=4, sticky=tk.NSEW)
 
     def create_buttons_frame(self):
         frame = tk.Frame(self.window)
