@@ -1,76 +1,76 @@
-import tkinter as calculator
-import math
+# import tkinter
 
-# ##############################################################################################
-
-def add_to_display(symbol):
-    global calculation
-    calculation += str(symbol)
-    display.delete(1, 'end')
-    display.insert(1, calculation)
-
-def evaluate():
-    global calculation
-    try:
-        calculation = str(eval(calculation))
-        display.delete(1, 'end')
-        display.insert(1, calculation)
-    except:
-        clear_field()
-        display.insert(1, 'Error')
-
-def clear_field():
-    global calculation
-    calculation = ''
-    display.delete(1, 'end')
-
-# ##############################################################################################
+import tkinter as tk
 
 calculation = ''
 
-container = calculator.Tk()
-container.geometry('500x700')
-container.title('Calculator')
+def add_to_calculation(symbol):
+    global calculation
+    calculation += str(symbol)
+    text_result.delete(1.0, 'end')
+    text_result.insert(1.0, calculation)
 
-display = calculator.Text(container, height=2, width=16, font=('Arial', 15))
-display.grid(columnspan=5)
 
-button_1 = calculator.Button(container, text='1', command=lambda: add_to_display(1), width=5, font=('Arial', 15))
-button_1.grid(row=2, column=1)
-button_2 = calculator.Button(container, text='2', command=lambda: add_to_display(2), width=5, font=('Arial', 15))
-button_2.grid(row=2, column=2)
-button_3 = calculator.Button(container, text='3', command=lambda: add_to_display(3), width=5, font=('Arial', 15))
-button_3.grid(row=2, column=3)
-button_4 = calculator.Button(container, text='4', command=lambda: add_to_display(4), width=5, font=('Arial', 15))
-button_4.grid(row=3, column=1)
-button_5 = calculator.Button(container, text='5', command=lambda: add_to_display(5), width=5, font=('Arial', 15))
-button_5.grid(row=3, column=2)
-button_6 = calculator.Button(container, text='6', command=lambda: add_to_display(6), width=5, font=('Arial', 15))
-button_6.grid(row=3, column=3)
-button_7 = calculator.Button(container, text='7', command=lambda: add_to_display(7), width=5, font=('Arial', 15))
-button_7.grid(row=4, column=1)
-button_8 = calculator.Button(container, text='8', command=lambda: add_to_display(8), width=5, font=('Arial', 15))
-button_8.grid(row=4, column=2)
-button_9 = calculator.Button(container, text='9', command=lambda: add_to_display(9), width=5, font=('Arial', 15))
-button_9.grid(row=4, column=3)
-button_open = calculator.Button(container, text='(', command=lambda: add_to_display('('), width=5, font=('Arial', 15))
-button_open.grid(row=5, column=1)
-button_0 = calculator.Button(container, text='0', command=lambda: add_to_display(0), width=5, font=('Arial', 15))
-button_0.grid(row=5, column=2)
-button_close = calculator.Button(container, text=')', command=lambda: add_to_display(')'), width=5, font=('Arial', 15))
-button_close.grid(row=5, column=3)
-button_addition = calculator.Button(container, text='+', command=lambda: add_to_display('+'), width=5, font=('Arial', 15))
-button_addition.grid(row=2, column=4)
-button_subtraction = calculator.Button(container, text='-', command=lambda: add_to_display('-'), width=5, font=('Arial', 15))
-button_subtraction.grid(row=3, column=4)
-button_multiplication = calculator.Button(container, text='*', command=lambda: add_to_display('*'), width=5, font=('Arial', 15))
-button_multiplication.grid(row=4, column=4)
-button_division = calculator.Button(container, text='/', command=lambda: add_to_display('/'), width=5, font=('Arial', 15))
-button_division.grid(row=5, column=4)
-button_equal = calculator.Button(container, text='=', command=lambda: evaluate(), width=10, font=('Arial', 15))
-button_equal.grid(row=6, column=2, columnspan=2)
+def evaluate_calculation():
+    global calculation
+    try:
+        calculation = str(eval(calculation))
+        text_result.delete(1.0, 'end')
+        text_result.insert(1.0, calculation)
+    except:
+        clear_field()
+        text_result.insert(1.0, 'Error')
+def clear_field():
+    global calculation
+    calculation = ''
+    text_result.delete(1.0, 'end')
 
-container.mainloop()
+
+
+root = tk.Tk()
+root.geometry('500x500')
+
+text_result = tk.Text(root, height=2, width=16, font=('Arial', 25))
+text_result.grid(columnspan=5)
+
+btn_1 = tk.Button(root, text='1', command=lambda: add_to_calculation(1), width=2, font=('Arial', 15))
+btn_1.grid(row=2, column=1)
+btn_2 = tk.Button(root, text='2', command=lambda: add_to_calculation(2), width=2, font=('Arial', 15))
+btn_2.grid(row=2, column=2)
+btn_3 = tk.Button(root, text='3', command=lambda: add_to_calculation(3), width=2, font=('Arial', 15))
+btn_3.grid(row=2, column=3)
+btn_4 = tk.Button(root, text='4', command=lambda: add_to_calculation(4), width=2, font=('Arial', 15))
+btn_4.grid(row=3, column=1)
+btn_5 = tk.Button(root, text='5', command=lambda: add_to_calculation(5), width=2, font=('Arial', 15))
+btn_5.grid(row=3, column=2)
+btn_6 = tk.Button(root, text='6', command=lambda: add_to_calculation(6), width=2, font=('Arial', 15))
+btn_6.grid(row=3, column=3)
+btn_7 = tk.Button(root, text='7', command=lambda: add_to_calculation(7), width=2, font=('Arial', 15))
+btn_7.grid(row=4, column=1)
+btn_8 = tk.Button(root, text='8', command=lambda: add_to_calculation(8), width=2, font=('Arial', 15))
+btn_8.grid(row=4, column=2)
+btn_9 = tk.Button(root, text='9', command=lambda: add_to_calculation(9), width=2, font=('Arial', 15))
+btn_9.grid(row=4, column=3)
+btn_open = tk.Button(root, text='(', command=lambda: add_to_calculation('('), width=2, font=('Arial', 15))
+btn_open.grid(row=5, column=1)
+btn_0 = tk.Button(root, text='0', command=lambda: add_to_calculation(0), width=2, font=('Arial', 15))
+btn_0.grid(row=5, column=2)
+btn_close = tk.Button(root, text=')', command=lambda: add_to_calculation(')'), width=2, font=('Arial', 15))
+btn_close.grid(row=5, column=3)
+btn_addition = tk.Button(root, text='+', command=lambda: add_to_calculation('+'), width=2, font=('Arial', 15))
+btn_addition.grid(row=2, column=4)
+btn_subtraction = tk.Button(root, text='-', command=lambda: add_to_calculation('-'), width=2, font=('Arial', 15))
+btn_subtraction.grid(row=3, column=4)
+btn_multiplication = tk.Button(root, text='*', command=lambda: add_to_calculation('*'), width=2, font=('Arial', 15))
+btn_multiplication.grid(row=4, column=4)
+btn_division = tk.Button(root, text='/', command=lambda: add_to_calculation('/'), width=2, font=('Arial', 15))
+btn_division.grid(row=5, column=4)
+btn_clear = tk.Button(root, text='AC', command=lambda: clear_field, width=11, font=('Arial', 15))
+btn_clear.grid(row=6, column=1, columnspan=2)
+btn_equal = tk.Button(root, text='=', command=lambda: evaluate_calculation(), width=11, font=('Arial', 15))
+btn_equal.grid(row=6, column=3, columnspan=2)
+
+root.mainloop()
 
 # lable = calculator.Label(container, text="SMC - 11A1", font=('Arial', 20))
 # lable.pack(padx=20, pady=20)
