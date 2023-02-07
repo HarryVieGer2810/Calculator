@@ -1,3 +1,4 @@
+import math
 print('1. SIN')
 print('2. COS')
 print('3. TAN')
